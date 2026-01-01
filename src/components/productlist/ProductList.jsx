@@ -152,10 +152,11 @@ const ProductList = () => {
 				): productosFiltrados.length > 0 ? (
 					productosOrdenados.map((producto) => ((
 						<div className="product-card" key={producto.id}>
-							<img src={producto.image}
-							alt={producto.image}
-							className="product-image"
-							onClick={() => handleImageClick(producto.id)}
+							<img
+							  src={producto.images?.[0] || ""}
+							  alt={producto.nombre}
+							  className="product-image"
+							  onClick={() => handleImageClick(producto.id)}
 							/>
 
 							<h3>{producto.nombre}</h3>
