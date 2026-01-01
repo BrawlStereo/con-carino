@@ -1,7 +1,7 @@
 .product-list {
   display: flex;
   gap: 1.5rem;
-  padding: 1rem;
+  padding: 0.25rem;
   flex-wrap: wrap;
 }
 
@@ -74,13 +74,14 @@ input[type="checkbox"] {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    font-size: 14px;
+    font-size: 17px;
     justify-content: flex-end;
     margin-bottom: 1rem;
 }
 
 .sort-options select {
   font-family: "Poppins", sans-serif;
+  font-size: 15px;
   padding: 0.5rem;
   border: 1px solid #ddd;
   border-radius: 10px;
@@ -139,12 +140,11 @@ input[type="checkbox"] {
 .filters-toggle {
   border: 1px solid #ddd;
   background: #fff;
-  padding: 0.70rem 0.65rem;
+  padding: 0.8rem 0.8rem;
   border-radius: 6px;
   font-size: 14px;
   cursor: pointer;
-  margin-left: 1rem;
-  margin-top: 21px;
+  margin-top: 24px;
   transition: transform 120ms ease, background 120ms ease;
 }
 
@@ -169,13 +169,12 @@ input[type="checkbox"] {
   border: 1px solid #eee;
   border-radius: 12px;
   padding: 0.75rem;
-  margin: 0.75rem 0;
+  margin-bottom: 1rem;
   box-shadow: 0 10px 30px rgba(0,0,0,0.08);
 
   animation: dropdownIn 160ms ease-out;
   transform-origin: top right;
 }
-
 
 .mobile-filters-dropdown h4 {
   margin-bottom: 0.5rem;
@@ -187,8 +186,9 @@ input[type="checkbox"] {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  font-size: 14px;
+  font-size: 16px;
   margin-bottom: 0.4rem;
+  padding-left: 10px;
 }
 
 /* Media Queries para pantallas pequeñas */
