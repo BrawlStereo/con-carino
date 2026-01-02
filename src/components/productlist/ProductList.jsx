@@ -105,7 +105,7 @@ const ProductList = () => {
 		</aside>
 		<main className="collections">
 			<div className="options">
-				<h2>TODAS LAS COLECCIONES</h2>
+				<h2>Todas las colecciones</h2>
 
 				<div className="sort-options">
 					<label>

@@ -1,7 +1,7 @@
 .product-list {
   display: flex;
   gap: 1.5rem;
-  padding: 0.25rem;
+  padding: 0.1rem;
   flex-wrap: wrap;
 }
 
@@ -61,7 +61,7 @@ input[type="checkbox"] {
 }
 
 .collections h2 {
-    font-size: 20px;
+    font-size: 22px;
     margin-bottom: 1rem;
 }
 
@@ -110,7 +110,8 @@ input[type="checkbox"] {
     text-align: center;
     background-color: #fff;
     overflow: hidden;
-    transition: transform 0.2s, bos-shadow 0.2s;
+    transition: transform 0.2s, box-shadow 0.2s;
+    border-radius: 12px;
 }
 
 .product-image {
@@ -124,10 +125,12 @@ input[type="checkbox"] {
 }
 
 .product-card h3 {
-    font-size: 14px;
+    font-size: 16px;
     margin: 0;
-    font-weight: 400;
+    font-weight: 600;
     text-align: left;
+    padding: 10px;
+    padding-bottom: 0;
 }
 
 .product-card p {
@@ -135,6 +138,7 @@ input[type="checkbox"] {
     font-weight: 600;
     color: #ed6c95;
     text-align: left;
+    padding: 10px;
 }
 
 .filters-toggle {
@@ -193,6 +197,12 @@ input[type="checkbox"] {
 
 /* Media Queries para pantallas pequeñas */
 @media (max-width: 1024px) {
+    .filters {
+        width: 100%;
+        margin-bottom: 1rem;
+        display: none;
+    }
+
     .filter-category {
         display: flex;
         justify-content: space-between;
@@ -221,9 +231,10 @@ input[type="checkbox"] {
 
 /* Media Queries para dispositivos móviles */
 @media (max-width: 768px) {
-    .filters {
-        width: 100%;
-        margin-bottom: 1rem;
+    .main-content {
+        flex-direction: column;
+        gap: 0.75rem;
+        padding: 0.5rem;
     }
 
     .filter-category, .filter-type {
@@ -232,29 +243,39 @@ input[type="checkbox"] {
     }
 
     .product-card h3 {
-        font-size: 12px;
+        font-size: 14px;
     }
 
     .product-card p {
         font-size: 14px;
+        padding-top: 5px;
     }
 
     .products {
         grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        grid-gap: 0.6rem;
     }
 
-    .product-card {
-        padding: 10px;
+    /* make filters and collections full width */
+    .filters, .collections {
+        width: 100%;
     }
 }
 
 /* Media Queries para pantallas muy pequeñas (móviles)*/
 @media (max-width: 480px) {
-    .filters {
-        width: 100%;
+    .main-content {
+        padding: 0.4rem;
+        gap: 0.5rem;
     }
 
     .filter-category, .filter-type {
+        width: 100%;
+        border-radius: 10px;
+        padding: 0.75rem;
+    }
+
+    .filters {
         width: 100%;
     }
 
@@ -263,59 +284,10 @@ input[type="checkbox"] {
     }
 
     .product-card h3 {
-        font-size: 10px;
+        font-size: 13px;
     }
 
     .product-card p {
-        font-size: 12px;
+        font-size: 13px;
     }
-
-    .product-card {
-        padding: 8px;
-    }
-}
-
-/* Ensure main content stacks on narrow devices and uses the full width */
-@media (max-width: 768px) {
-    .main-content {
-        flex-direction: column;
-        gap: 0.75rem;
-        padding: 0.5rem;
-    }
-
-    /* make filters and collections full width */
-    .filters, .collections {
-        width: 100%;
-    }
-
-    .filter-category, .filter-type {
-        width: 100%;
-        margin-bottom: 12px;
-    }
-
-    .products {
-        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-        grid-gap: 0.6rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .main-content {
-        padding: 0.4rem;
-        gap: 0.5rem;
-    }
-
-    .filter-category, .filter-type {
-        border-radius: 10px;
-        padding: 0.75rem;
-    }
-
-    .product-card h3 { font-size: 12px }
-    .product-card p { font-size: 13px }
-}
-
-@media (max-width: 768px) {
-  .filters {
-    display: none;
-  }
 }
