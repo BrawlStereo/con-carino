@@ -1,82 +1,81 @@
 import "./Navbar.css"
-import React, { useEffect, useState } from "react"
+import React, { useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
-import SearchOverlay from "../search/SearchOverlay"
 
 const Navbar = () => {
-  const [searchOpen, setSearchOpen] = useState(false)
   const [value, setValue] = useState("")
   const navigate = useNavigate()
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    if (e && e.preventDefault) e.preventDefault()
     navigate(`/?q=${encodeURIComponent(value)}`)
   }
-
-  useEffect(() => {
-    if (searchOpen) {
-      document.body.style.overflow = "hidden"
-    } else {
-      document.body.style.overflow = ""
-    }
-
-    return () => {
-      document.body.style.overflow = ""
-    }
-  }, [searchOpen])
 
   return (
     <>
       <header className="header">
-        {/* IZQUIERDA */}
         <div className="left">
+          {/* hamburger button for future side menu */}
           <button
-            className="icon-btn"
-            onClick={() => setSearchOpen(true)}
-            aria-label="Buscar"
+            className="hamburger-btn"
+            aria-label="Abrir menú"
+            onClick={() => {
+              /* placeholder for side menu open - implement later */
+            }}
           >
-            <i className="fas fa-search"></i>
+            <i className="fas fa-bars" aria-hidden></i>
           </button>
+
+          <div className="logo">
+            <Link to="/">
+              <img src="/logo.png" alt="Con Cariño" />
+            </Link>
+          </div>
+
+          <form className="search-form desktop-only" onSubmit={handleSubmit} role="search">
+            <input
+              type="search"
+              placeholder="Buscar productos..."
+              value={value}
+              onChange={(e) => setValue(e.target.value)}
+              aria-label="Buscar productos"
+            />
+            <button type="submit" aria-label="Buscar" className="search-submit">
+              <i className="fas fa-search"></i>
+            </button>
+          </form>
         </div>
 
-        {/* CENTRO */}
-        <div className="logo">
-          <Link to="/">
-            <img src="/logo.png" alt="Con Cariño" />
-          </Link>
-        </div>
-
-        {/* DERECHA */}
         <div className="right">
-          <a
-            href="https://wa.me/523121944320"
-            target="_blank"
-            rel="noreferrer"
-            className="whatsapp-btn mobile-only"
-          >
-            <i className="fab fa-whatsapp"></i>
-            <span>Pedir</span>
-          </a>
 
           <a
             href="https://wa.me/523121944320"
             target="_blank"
             rel="noreferrer"
-            className="whatsapp-btn desktop-only"
+            className="whatsapp-btn"
           >
-            <i className="fab fa-whatsapp"></i>
-            <span>Pedir en Whatsapp</span>
+            <i className="fab fa-whatsapp" aria-hidden></i>
+            <span className="whatsapp-label desktop-only">Pedir en Whatsapp</span>
+            <span className="whatsapp-label mobile-only">Pedir</span>
           </a>
         </div>
       </header>
 
-
-      <SearchOverlay
-        open={searchOpen}
-        value={value}
-        onChange={setValue}
-        onSubmit={handleSubmit}
-        onClose={() => setSearchOpen(false)}
-      />
+      {/* Mobile search (not fixed) placed below the navbar */}
+      <div className="mobile-search mobile-only">
+        <form onSubmit={handleSubmit} role="search">
+          <input
+            type="search"
+            placeholder="Buscar productos..."
+            value={value}
+            onChange={(e) => setValue(e.target.value)}
+            aria-label="Buscar productos"
+          />
+          <button type="submit" aria-label="Buscar">
+            <i className="fas fa-search"></i>
+          </button>
+        </form>
+      </div>
     </>
   )
 }
