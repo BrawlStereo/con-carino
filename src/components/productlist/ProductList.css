@@ -107,21 +107,48 @@ input[type="checkbox"] {
 }
 
 .product-card {
-    text-align: center;
+    text-align: left;
     background-color: #fff;
     overflow: hidden;
-    transition: transform 0.2s, box-shadow 0.2s;
+    transition: transform 0.25s cubic-bezier(.2,.9,.2,1), box-shadow 0.25s ease;
     border-radius: 12px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
 }
 
 .product-image {
     max-width: 100%;
-    cursor: pointer;
-    transition: transform 0.3s ease;
+    display: block;
+    border-radius: 8px;
+    object-fit: cover;
 }
 
-.product-image:hover {
-    transform: scale(1.09);
+/* Hover on the whole card (including when hovering the title) */
+.product-card:hover {
+    transform: scale(1.035);
+    box-shadow: 0 14px 36px rgba(13,13,13,0.12);
+}
+
+/* Color transition for the product name; use the navbar pink */
+.product-card h3 {
+    font-size: 16px;
+    margin: 0;
+    font-weight: 600;
+    padding: 0 6px 0 0;
+    color: #111; /* default */
+    transition: color 150ms ease;
+}
+
+.product-card:hover h3 {
+    color: #ff50a0; /* match .header background */
+}
+
+/* keyboard focus accessibility */
+.product-card:focus {
+    outline: 3px solid rgba(255,80,160,0.18);
+    transform: scale(1.02);
 }
 
 .product-card h3 {

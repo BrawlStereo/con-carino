@@ -149,20 +149,31 @@ const ProductList = () => {
 			<div className="products">
 				{error ? (
 					<p className="error-message">{error}</p>
-				): productosFiltrados.length > 0 ? (
-					productosOrdenados.map((producto) => ((
-						<div className="product-card" key={producto.id}>
+					): productosFiltrados.length > 0 ? (
+						productosOrdenados.map((producto) => (
+						<div
+							className="product-card"
+							key={producto.id}
+							role="button"
+							tabIndex={0}
+							onClick={() => handleImageClick(producto.id)}
+							onKeyDown={(e) => {
+								if (e.key === 'Enter' || e.key === ' ') {
+									e.preventDefault();
+									handleImageClick(producto.id);
+								}
+							}}
+						>
 							<img
 							  src={producto.images?.[0] || ""}
 							  alt={producto.nombre}
 							  className="product-image"
-							  onClick={() => handleImageClick(producto.id)}
 							/>
 
 							<h3>{producto.nombre}</h3>
 							<p>${producto.precio} MXN</p>
-						</div>
-					)))
+							</div>
+						))
 				) : (
 					<p className="no-results">
 						No se encontraron productos que coincidan con los filtros seleccionados.
